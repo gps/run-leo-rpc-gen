@@ -1,0 +1,53 @@
+name: 'Generate Leo RPC Gen Code'
+description: 'Uses Leo RPC Gen to generate RPC artifacts & publish them'
+author: 'Gopal Sharma <gps@surya-soft.com>'
+inputs:
+  GROUP:
+    description: Group name to use for Kotlin
+    required: false
+  PROJECT:
+    description: Project name
+    required: false
+  RPC_ROOT:
+    description: Root folder that contains RPC definitions, relative to repo root.
+    required: false
+    default: '.'
+  ARTIFACTORY_USERNAME:
+    description: Artifactory username to fetch JVM runtime artifacts from.
+    required: false
+    default: 'githubactions'
+  ARTIFACTORY_PASSWORD:
+    description: Artifactory password to fetch JVM runtime artifacts from.
+    required: true
+  GENERATE_ANDROID: 'Set to `true` if you wish to generate client code for Android. If unspecified, or any other value, code will not be generated.'
+    description: Artifactory password to fetch JVM runtime artifacts from.
+    required: false
+    default: true
+  GENERATE_KOTLIN_SERVER: 'Set to `true` if you wish to generate client code for Kotlin server. If unspecified, or any other value, code will not be generated.'
+    description: Artifactory password to fetch JVM runtime artifacts from.
+    required: false
+    default: true
+  GENERATE_KOTLIN_CLIENT: 'Set to `true` if you wish to generate client code for Kotlin client. If unspecified, or any other value, code will not be generated.'
+    description: Artifactory password to fetch JVM runtime artifacts from.
+    required: false
+    default: true
+  SAVE_ARTIFACTS:
+    description: 'Set to `true` if you wish to save generated code as artifacts of this run. If unspecified, or any other value, artifacts will not be saved.'
+    required: false
+    default: false
+  PUBLISH:
+    description: 'Set to `true` if you wish to publish artifacts. If unspecified, or any other value, artifacts will not be published.'
+    required: false
+    default: false
+  GITHUB_ACTOR:
+    description: GitHub Actor to use when publishing artifacts. Required if `PUBLISH` is true.
+    required: false
+  GITHUB_TOKEN:
+    description: GitHub Actor to use when publishing artifacts. Required if `PUBLISH` is true.
+    required: false
+  NEXT_BUILD_VERSION:
+    description: Build version to use when publishing artifacts. Required if `PUBLISH` is true.
+    required: false
+runs:
+  using: node12
+  main: index.js
